@@ -1,5 +1,5 @@
 # Usa una imagen base de Node.js
-FROM node:18
+FROM node:23
 
 # Establece el directorio de trabajo en el contenedor
 WORKDIR /app
@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 1234
 
 # Comando para iniciar Parcel
-CMD ["npm", "start"]
+CMD ["npm", "dev"]

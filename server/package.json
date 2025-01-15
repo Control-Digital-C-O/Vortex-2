@@ -2,9 +2,9 @@
   "name": "server",
   "version": "1.0.0",
   "source": "./src/index.js",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "parcel watch"
+    "dev": "parcel watch"
   },
   "keywords": [
     "parcel"
