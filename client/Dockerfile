@@ -13,7 +13,6 @@ RUN npm install
 # Copy the rest of the application code to the working directory
 COPY . .
 
-# Expose port 3000 for the React app
 EXPOSE 5173
 
 # Command to run the application
