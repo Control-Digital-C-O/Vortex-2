@@ -1,20 +1,20 @@
-# Utilizar una imagen base con Node.js
-FROM node:23
+# Usa una imagen base de Node.js
+FROM node:18
 
-# Crear y configurar el directorio de la aplicación
+# Establece el directorio de trabajo en el contenedor
 WORKDIR /app
 
-# Copiar los archivos de configuración
+# Copia los archivos de configuración
 COPY package*.json ./
 
-# Instalar dependencias
+# Instala las dependencias
 RUN npm install
 
-# Copiar el resto de los archivos
+# Copia el resto del código fuente
 COPY . .
 
-# Exponer el puerto
-EXPOSE 5000
+# Expone el puerto que usará Parcel
+EXPOSE 1234
 
-# Ejecutar la aplicación
-CMD ["npm", "run", "dev"]
+# Comando para iniciar Parcel
+CMD ["npm", "start"]

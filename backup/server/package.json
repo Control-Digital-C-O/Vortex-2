@@ -1,14 +1,14 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "source": "./src/index.js",
-  "main": "index.js",
+  "source": "dev/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "parcel watch"
+    "start": "parcel",
+    "dev": "parcel watch", 
+    "build": "parcel build"
   },
-  "keywords": [
-    "parcel"
-  ],
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
