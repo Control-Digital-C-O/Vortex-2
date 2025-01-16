@@ -6,5 +6,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: "0.0.0.0",
+    proxy: {
+      "/modules": "http://localhost:3000/src/modules", // Redirige las solicitudes al servidor
+    },
   },
 });
