@@ -1,20 +1,26 @@
-# Utilizar una imagen base con Node.js
+# Usa una imagen base de Node.js
 FROM node:23
 
-# Crear y configurar el directorio de la aplicación
+# Establece el directorio de trabajo en el contenedor
 WORKDIR /app
 
-# Copiar los archivos de configuración
+# Copia los archivos de configuración
 COPY package*.json ./
 
-# Instalar dependencias
+# Instala las dependencias
 RUN npm install
 
-# Copiar el resto de los archivos
-# COPY . .
+# Copia el resto del código fuente
+COPY . .
 
-# Exponer el puerto
-# EXPOSE 1234
+# Crea la carpeta dist si no existe
+RUN mkdir -p dist
 
-# Ejecutar la aplicación
+# Verifica si nodemon está instalado
+RUN ./node_modules/.bin/nodemon -v
+
+# Expone el puerto que usará Parcel
+EXPOSE 1234
+
+# Comando para iniciar Parcel
 CMD ["npm", "run", "dev"]

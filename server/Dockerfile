@@ -5,7 +5,7 @@ FROM node:23
 WORKDIR /app
 
 # Copia los archivos de configuración
-COPY package*.json ./
+COPY package.json ./
 
 # Instala las dependencias
 RUN npm install
@@ -13,8 +13,11 @@ RUN npm install
 # Copia el resto del código fuente
 COPY . .
 
-# Expone el puerto que usará Parcel
+# Asegúrate de que la carpeta de salida exista
+RUN mkdir -p dist
+
+# Expone el puerto que usará Parcel (puedes cambiar este puerto si es necesario)
 EXPOSE 1234
 
-# Comando para iniciar Parcel
-CMD ["npm", "dev"]
+# Comando para iniciar el servidor con hot reload
+CMD ["npm", "run", "dev"]

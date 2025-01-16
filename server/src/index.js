@@ -1,3 +1,7 @@
-import { test } from "./modules/test.js";
+import { textoPorConsola } from "./modules/test";
+import { suma } from "./modules/test";
 
-console.log(test());
+textoPorConsola(1);
+textoPorConsola(2);
+
+console.log("4+10=", suma(4, 10));

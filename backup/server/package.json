@@ -1,18 +1,19 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "source": "dev/index.js",
+  "source": "./src/index.js",
   "main": "dist/index.js",
   "scripts": {
-    "start": "parcel",
-    "dev": "parcel watch", 
-    "build": "parcel build"
+    "dev": "nodemon"
   },
-  "keywords": [],
+  "keywords": [
+    "parcel"
+  ],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "nodemon": "^3.1.9",
     "parcel": "^2.13.3"
   }
 }

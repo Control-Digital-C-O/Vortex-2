@@ -24,12 +24,16 @@ services:
       context: ./server
       dockerfile: Dockerfile
     ports:
-      - "1234:1234"
+      - "1234:1234"  # Asegúrate de que este puerto sea el adecuado para tu servidor
     volumes:
-      - ./server:/app
-      # Igual que en el servicio 'front', evitar conflictos de node_modules
-      - /app/node_modules
-    command: npm run dev # Este comando debe coincidir con tu `package.json`
+      - ./server:/app  # Sincroniza el código fuente
+      - ./server/src:/app/src  # Carpeta fuente sincronizada
+      - ./server/dist:/app/dist  # Carpeta de salida sincronizada
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    stdin_open: true
+    tty: true
+    command: npm run dev # Parcel supervisará esta carpeta para cambios
     networks:
       - default
 
