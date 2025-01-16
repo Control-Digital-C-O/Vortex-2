@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { dynamicImportWithParams } from './utils/dynamicImport'
+import { dynamicImport } from './utils/dynamicImport'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -10,11 +10,8 @@ function App() {
   useEffect(() => {
     async function loadModule() {
       try {
-        const module = await dynamicImportWithParams('test', 'hola');
-        // Utiliza las funciones o datos exportados del módulo
-        if (module.someFunction) {
-          module.someFunction();
-        }
+        const module = await dynamicImport('test');
+        console.log(module.test.hola());
       } catch (error) {
         console.error('Error al usar el módulo remoto:', error);
       }
