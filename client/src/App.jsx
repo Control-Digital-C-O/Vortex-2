@@ -2,23 +2,25 @@ import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { dynamicImport } from './utils/dynamicImport'
+// import { dynamicImport } from './utils/dynamicImport'
 
 function App() {
   const [count, setCount] = useState(0)
 
-  useEffect(() => {
-    async function loadModule() {
-      try {
-        const module = await dynamicImport('test');
-        console.log(module.test.hola());
-      } catch (error) {
-        console.error('Error al usar el módulo remoto:', error);
-      }
-    }
+  // Utilidad no funcionando, el backend no está sirviendo el módulo
 
-    loadModule();
-  }, []);
+  // useEffect(() => {
+  //   async function loadModule() {
+  //     try {
+  //       const module = await dynamicImport('test');
+  //       console.log(module.test.hola());
+  //     } catch (error) {
+  //       console.error('Error al usar el módulo remoto:', error);
+  //     }
+  //   }
+
+  //   loadModule();
+  // }, []);
 
   return (
     <>
