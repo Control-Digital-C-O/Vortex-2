@@ -1,5 +1,5 @@
 # Use the official Node.js image from the Docker Hub
-FROM node:23
+FROM node:23-alpine
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -16,4 +16,4 @@ COPY . .
 EXPOSE 5173
 
 # Command to run the application
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]

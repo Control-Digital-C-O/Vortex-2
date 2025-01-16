@@ -1,6 +1,0 @@
-{
-  "watch": ["src"],
-  "ext": "js,json",
-  "ignore": ["dist"],
-  "exec": "parcel watch src/index.js --dist-dir dist --no-cache"
-}

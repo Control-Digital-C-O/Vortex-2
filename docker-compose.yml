@@ -1,42 +1,41 @@
 services:
-  front:
-    build: 
+  client:
+    build:
       context: ./client
       dockerfile: Dockerfile
     ports:
       - "5173:5173"
     volumes:
       - ./client:/app
-      # Evitar conflictos entre los node_modules del host y del contenedor
       - /app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
     stdin_open: true
     tty: true
-    depends_on:
-      - back
-    command: npm start # Asegúrate de que este comando sea correcto en tu proyecto
+    command: ["npm", "run", "dev"]
     networks:
       - default
+    depends_on:
+      - server
 
-  back:
+  server:
     build:
       context: ./server
       dockerfile: Dockerfile
     ports:
-      - "1234:1234"  # Asegúrate de que este puerto sea el adecuado para tu servidor
+      - "3000:3000"
     volumes:
-      - ./server:/app  # Sincroniza el código fuente
-      - ./server/src:/app/src  # Carpeta fuente sincronizada
-      - ./server/dist:/app/dist  # Carpeta de salida sincronizada
+      - ./server:/app
+      - /app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
     stdin_open: true
     tty: true
-    command: npm run dev # Parcel supervisará esta carpeta para cambios
+    command: ["npm", "run", "dev"]
     networks:
       - default
 
 networks:
   default:
     driver: bridge
+

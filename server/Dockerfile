@@ -1,23 +1,19 @@
-# Usa una imagen base de Node.js
-FROM node:23
+# Use the official Node.js image from the Docker Hub
+FROM node:23-alpine
 
-# Establece el directorio de trabajo en el contenedor
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copia los archivos de configuración
-COPY package.json ./
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
 
-# Instala las dependencias
+# Install dependencies
 RUN npm install
 
-# Copia el resto del código fuente
+# Copy the rest of the application code to the working directory
 COPY . .
 
-# Asegúrate de que la carpeta de salida exista
-RUN mkdir -p dist
+EXPOSE 3000
 
-# Expone el puerto que usará Parcel (puedes cambiar este puerto si es necesario)
-EXPOSE 1234
-
-# Comando para iniciar el servidor con hot reload
+# Command to run the application
 CMD ["npm", "run", "dev"]
