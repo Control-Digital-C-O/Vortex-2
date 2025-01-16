@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     host: "0.0.0.0",
     proxy: {
-      "/modules": "http://localhost:3000/src/modules", // Redirige las solicitudes al servidor
+      "/modules": "http://localhost:3000", // Redirige las solicitudes al servidor
     },
   },
 });
